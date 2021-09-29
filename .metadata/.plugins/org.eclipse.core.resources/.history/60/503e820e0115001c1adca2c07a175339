@@ -1,0 +1,75 @@
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;  
+import java.io.File;
+/**
+ * Servlet implementation class MyServletAlkindi
+ */
+@WebServlet("/MyServletAlkindi")
+public class MyServletAlkindi extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MyServletAlkindi() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Hello World!");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		//parsing a CSV file into Scanner class constructor  
+		Scanner sc = new Scanner(new File("C:\\Users\\yskin\\numbers.csv"));  
+		//sc.useDelimiter("\\n || \\r");   //sets the delimiter pattern  
+		
+		 List<Integer> numbers = new ArrayList<Integer>();
+		 
+		while (sc.hasNextLine())  //returns a boolean value  
+		{  
+			//System.out.print(sc.next());  //find and returns the next complete token from this scanner 
+			int current = Integer.parseInt(sc.nextLine());
+			if (current % 2 == 0)
+			{
+				numbers.add(current);
+				//response.getWriter().append(""+ current+"<br />");
+			}
+
+		}   
+		sc.close();  //closes the scanner 
+		
+		 Collections.sort(numbers); 
+		 
+		 int i = 1;
+		 while (i <= 10)
+		 {
+			 int temp = numbers.size() - i;
+			 response.getWriter().append(""+ numbers.get(temp)+"<br />");
+		 }
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

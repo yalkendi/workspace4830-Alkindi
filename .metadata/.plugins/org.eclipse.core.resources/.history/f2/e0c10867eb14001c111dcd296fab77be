@@ -1,0 +1,67 @@
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;  
+import java.io.File;
+/**
+ * Servlet implementation class MyServletAlkindi
+ */
+@WebServlet("/MyServletAlkindi")
+public class MyServletAlkindi extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MyServletAlkindi() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Hello World!");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		//parsing a CSV file into Scanner class constructor  
+		Scanner sc = new Scanner(new File("C:\\Users\\yskin\\Documents\\CSCI4830-Intro-to-Software-Engineering\\workspace4850-Alkindi\\worproject-ex-0913-Alkindi\\src\\main\\java\numbers.csv"));  
+		sc.useDelimiter("\n");   //sets the delimiter pattern  
+		
+		 List<Integer> numbers = new ArrayList<Integer>();
+		 
+		while (sc.hasNext())  //returns a boolean value  
+		{  
+			//System.out.print(sc.next());  //find and returns the next complete token from this scanner 
+			int current = sc.nextInt();
+			if (current % 2 == 0)
+			{
+				numbers.add(current);
+			}
+			
+			
+			
+		}   
+		sc.close();  //closes the scanner 
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
