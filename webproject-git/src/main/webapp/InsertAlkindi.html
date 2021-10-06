@@ -2,14 +2,14 @@
 <head>
 <style>
 header {
-    background-color:black;
+    background-color:d5d4da;
     color:white;
     text-align:center;
     padding:5px;	 
 }
 nav {
     line-height:30px;
-    background-color:#eeeeee;
+    background-color:white;
     height:300px;
     width:100px;
     float:left;
@@ -21,12 +21,21 @@ section {
     padding:10px;	 	 
 }
 footer {
-    background-color:black;
+    background-color:d5d4da;
     color:white;
     clear:both;
     text-align:center;
     padding:5px;	 	 
 }
+
+.Large
+{
+
+   	height: 200px;
+    width: 50%;
+}
+
+
 </style>
 </head>
 
@@ -35,16 +44,18 @@ footer {
 	<h1> <a href="/webproject-git/Home.html">Chef Meow Blog</a> <br> </h1>
 </header>
 
+<nav>
 
+</nav>
 
 <section>
 	<h1>Add a recipe</h1>
 	
 	<form action="InsertAlkindi" method="POST">
 	
-		Name: <input type="text" name="name"> <br />
-		Ingredients: <input type="text" name="ingredients"> <br />
-		How: <input type="text" name="how"> <br />
+		Name: <input type="text" name="name" > <br /> <br/>
+		Ingredients: <input type="text" name="ingredients" > <br /> <br/>
+		How: <textarea name="how"  class="Large" ></textarea> <br/>
 
 		
 		<input type="submit" value="Submit" />
